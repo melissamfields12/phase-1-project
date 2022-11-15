@@ -11,12 +11,13 @@ body {
 }
 h1 {
     display: block;
+    text-align: center;
     font-size: 2em;
-    margin-block-start: 0.67em;
+    /* margin-block-start: 0.67em;
     margin-block-end: 0.67em;
     margin-inLine-start: 0px;
-    margin-inLine-end: 0px;
-    margin: 10px 80px 20px 10px;
+    margin-inLine-end: 0px; */
+    /* margin: 10px 80px 20px 10px; */
     font-weight: bold;
     color: #116466;
     border: solid;
@@ -31,11 +32,14 @@ h1 {
 
 .card {
     text-align: center;
-    border: grey solid 1px;
+    border: solid;
+    border-color: #17252A;
+    border-radius: 5px
     padding: 1rem;
-    width: 15rem;
-    height: 25rem;
-    display: inline-grid;
+    width: 25rem;
+    height: 15rem;
+    display: block;
     margin: 1rem 2rem;
+    background-color: #DEF2F1;
     box-shadow: 3px 4px #e04b52
 }
