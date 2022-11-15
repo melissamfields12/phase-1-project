@@ -1,3 +1,27 @@
 body {
-    background: lightblue;
+    background-image: url("https://cdn.pixabay.com/photo/2015/09/13/10/06/pay-937882_960_720.jpg");
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+    font-family: sans-serif;       
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inLine-start: 0px;
+    margin-inLine-end: 0px;
+    margin: 10px 80px 20px 10px;
+    font-weight: bold;
+    color: #116466;
+    border: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    background-color: #DEF2F1;
+    border-color: #17252A;
 }
