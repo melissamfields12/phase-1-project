@@ -1,12 +1,14 @@
 const card = document.querySelector('.card');
+// let randomFact = Math.floor(Math.random() * (fact.length))
+let factArray = []
 
 function fetchFacts() {
     fetch('http://localhost:3000/facts')
     .then(resp => resp.json())
-    .then(data => data.forEach(fact => 
-        // console.log(fact)
-        showFact(fact)))
-}
+    .then(data => {
+        factArray = data.map(fact => showFact(fact));  
+        console.log(fact)
+    })
 fetchFacts()
 
 function showFact(fact) {
@@ -20,8 +22,7 @@ function showFact(fact) {
     li3.textContent = `Fact type: ${fact.type}`;
     ul.append(li1, li2, li3)
     card.append(ul);
-    return fact
-}
-function showOneFact() {
-
+    console.log(fact)
+    const factID = fact.id;
+    factID(Math.floor(Math.random() * (factID.length)))
 }
