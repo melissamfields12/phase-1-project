@@ -2,23 +2,22 @@ const card = document.querySelector('.card');
 // let randomFact = Math.floor(Math.random() * (fact.length))
 const factUrl = 'http://localhost:3000/facts'
 let factArray = []
-
+// Fetch JSON data
 function fetchFacts() {
     fetch(factUrl)
     .then(resp => resp.json())
-    .then(facts => { 
+    .then(facts => { //console.log(facts)
         factArray = Object.values(facts)
-        factArray.forEach((fact) => {
+        // factArray.forEach((fact) => {
             // console.log(factArray)
         createFact(factArray)
         }) 
-        // debugger;
-        // data.map(fact => showFact(fact));  
-        // console.log(fact)
-    })
+        // debugger;  
+
 }
 fetchFacts()
-
+// Create elements to store fact information and append to the DOM
+// Single out one random fact
 function createFact(factArray) {
     factArray.map((facts) => {
     let randomFact = Math.floor(Math.random() * (factArray.length))
@@ -33,7 +32,6 @@ function createFact(factArray) {
     ul.append(li1, li2, li3)
     card.append(ul);
     
-    // console.log(factArray)
     // const factID = fact.id;
     // factID(Math.floor(Math.random() * (factID.length)))
 })
