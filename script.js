@@ -1,35 +1,46 @@
 const card = document.querySelector('.card');
 const factUrl = 'http://localhost:3000/facts'
 const newFactBtn = document.querySelector('#new-fact-btn')
+const searchFactsContainer = document.querySelector('#new-fact-request')
+const searchFactsForm = document.getElementById("search-facts-form")
+const searchedNumber = searchFactsForm.value;
+// console.log(searchFactsForm)
 let factArray = []
 
 // Create a mouseover event listener when hovering over the daily fact
 // to create a bolder border
 
-// Create click event to generate a new random fact
+// Click event that generates a new random fact
 newFactBtn.addEventListener("click", generateNewFact); 
 
-// Create submit event listener to prevent refreshing the page when typing
-// in a number they want to view a fact about
+// Submit event listener to prevent from refreshing the page when submitting
+// the search for a particular number fact and clears the text from the
+// search bar
+searchFactsContainer.addEventListener("submit", (event) => {
+    event.preventDefault()
+    // console.log(event)
+    searchFactsForm.value = "";
+    searchForFact(searchedNumber)
+})
 
-// Fetch JSON data
+// Fetching JSON data
 function fetchFacts() {
     fetch(factUrl)
     .then(resp => resp.json())
     .then(factArray =>  {
     const generatedFact = generateRandomFact(factArray)
-    createFact(generatedFact)
+    createRandomFact(generatedFact)
     })
 }
 fetchFacts()
-// Single out one random fact to appear and add delete
+// This function pulls out one random fact to appear
 function generateRandomFact(factArray) {
     let randomNumber = Math.floor(Math.random() * (factArray.length));
     const randomFact = factArray[randomNumber];
     return randomFact;
 }
-// Create elements to store fact information and append to the DOM
-function createFact(generatedFact){  
+// This function creates the fact and appends it to the DOM
+function createRandomFact(generatedFact){  
     const ul = document.createElement('ul')
     ul.classList.add('list')
     const li1 = document.createElement('li');
@@ -41,10 +52,23 @@ function createFact(generatedFact){
     ul.append(li1, li2, li3)
     card.append(ul);    
 }
-// Create function to generate new fact when the click event listener's clicked
+// This function generates a new fact when the click event listener's clicked
 function generateNewFact() {
     card.innerHTML = "";
     fetchFacts()
 }
 // Create a function that will allow users to type in a number to view the
 // fact associated. 
+function searchForFact(searchedNumber) {
+    card.innerHTML = "";
+    fetch(factUrl)
+    .then(resp => resp.json())
+    .then(factArray => {
+        const searchedFact = factArray[searchedNumber]
+    return factArray.find(searchedFact => searchedFact.number === searchedNumber)
+    })
+    
+    // createFact
+}
+
+
