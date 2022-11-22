@@ -22,6 +22,11 @@ searchFactsContainer.addEventListener("submit", (event) => {
     // console.log(event)
     // debugger;
     // console.log(searchedNumber);
+    // Attempted to do an alert on the numbers outside of the range 1-50
+    // if (searchedNumber >= 1 && searchedNumber <= 50) {
+    //     return document.querySelector('#submit-search').addEventListener("submit", (event) => 
+    //     alert("No facts were located for that number. Please try again."))
+    // }
     searchFactsForm.value = "";
     searchForFact(searchedNumber);
 })
