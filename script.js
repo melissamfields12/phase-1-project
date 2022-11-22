@@ -1,11 +1,11 @@
 const card = document.querySelector('.card');
 const factUrl = 'http://localhost:3000/facts'
-const newFactBtn = document.querySelector('#new-fact-btn')
-const searchFactsContainer = document.querySelector('#new-fact-request')
-const searchFactsForm = document.getElementById("search-facts-form")
-const searchedNumber = searchFactsForm.value;
+const newFactBtn = document.querySelector('#new-fact-btn');
+const searchFactsContainer = document.querySelector('#new-fact-request');
+const searchFactsForm = document.getElementById("search-facts-form");
+
 // console.log(searchFactsForm)
-let factArray = []
+// let factArray = [];
 
 // Create a mouseover event listener when hovering over the daily fact
 // to create a bolder border
@@ -17,10 +17,13 @@ newFactBtn.addEventListener("click", generateNewFact);
 // the search for a particular number fact and clears the text from the
 // search bar
 searchFactsContainer.addEventListener("submit", (event) => {
-    event.preventDefault()
+    event.preventDefault();
+    const searchedNumber = searchFactsForm.value;
     // console.log(event)
+    // debugger;
+    // console.log(searchedNumber);
     searchFactsForm.value = "";
-    searchForFact(searchedNumber)
+    searchForFact(searchedNumber);
 })
 
 // Fetching JSON data
@@ -28,8 +31,8 @@ function fetchFacts() {
     fetch(factUrl)
     .then(resp => resp.json())
     .then(factArray =>  {
-    const generatedFact = generateRandomFact(factArray)
-    createRandomFact(generatedFact)
+    const generatedFact = generateRandomFact(factArray);
+    createRandomFact(generatedFact);
     })
 }
 fetchFacts()
@@ -53,22 +56,39 @@ function createRandomFact(generatedFact){
     card.append(ul);    
 }
 // This function generates a new fact when the click event listener's clicked
+// and appends it to the DOM
 function generateNewFact() {
     card.innerHTML = "";
-    fetchFacts()
+    fetchFacts();
 }
-// Create a function that will allow users to type in a number to view the
-// fact associated. 
+// This function allows users to type in a number to view the associated fact
 function searchForFact(searchedNumber) {
-    card.innerHTML = "";
     fetch(factUrl)
     .then(resp => resp.json())
     .then(factArray => {
-        const searchedFact = factArray[searchedNumber]
-    return factArray.find(searchedFact => searchedFact.number === searchedNumber)
-    })
-    
-    // createFact
+    const searchedFact = factArray.find((fact) => fact.number== searchedNumber);
+        // debugger;
+        card.innerHTML = ""
+        createFoundFact(searchedFact)
+})
 }
+// This function creates the searched fact and appends it to the DOM
+function createFoundFact(searchedFact) {
+    const ul = document.createElement('ul')
+    ul.classList.add('list')
+    const li1 = document.createElement('li');
+    li1.textContent = `Number: ${searchedFact.number}`;
+    const li2 = document.createElement('li');
+    li2.textContent = `Random fact: ${searchedFact.text}`;
+    const li3 = document.createElement('li');
+    li3.textContent = `Fact type: ${searchedFact.type}`;
+    ul.append(li1, li2, li3)
+    card.append(ul); 
+}
+
+
+    
+    
+
 
 
