@@ -1,13 +1,17 @@
 body {
     background-image: url("https://cdn.pixabay.com/photo/2015/09/13/10/06/pay-937882_960_720.jpg");
     background-size: cover; 
-    flex-direction: row;
-    max-width: 500px;
-    margin: auto;
+    /* flex-direction: row; */
+    /* max-width: 500px;
+    margin: auto; */
     font-family: sans-serif;       
 }
 h1 {
-    display: block;
+    box-sizing: border-box;
+    height: 100px;
+    width: 500px;
+    padding: 10px;
+    margin: auto;
     text-align: center;
     font-size: 2em;
     font-weight: bold;
@@ -18,44 +22,46 @@ h1 {
     background-color: #DEF2F1;
     border-color: #17252A;
 }
-#daily-fact {
-  
-}
 
 .card {
-    text-align: left;
-    font-family: sans-serif;
-    font-size: 1.5rem;
-    /* list-style-type: none; */
+    box-sizing: border-box;
+    height: 400px;
+    width: 400px;  
+    padding 10px;
+    padding-top: 15px;
     border: solid;
     border-color: #17252A;
     border-radius: 5px
-    padding: 1rem;
-    width: 25rem;
-    height: 15rem;
-    display: block;
+    text-align: left;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    /* width: 300px;
+    height: 20rem; */
+    /* display: block; */
     margin: auto;
     background-color: #DEF2F1;
     box-shadow: 3px 4px #e04b52
 }
 div#new-fact {
-    display: inline-block;
-    float: right;
-    font-size: 1rem;
-    font-weight: bold;
-    height: 4rem;
-    width: 10rem;
-    color: #116466;
+    display: border-box;
+    height: 75px;
+    width: 150px;
+    padding: 10px;
     border: solid;
     border-width: 2px;
     border-radius: 5px;
-    background-color: #DEF2F1;
     border-color: #17252A;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    color: #116466;
+    background-color: #DEF2F1;
 }
 div#search-facts-container {
     display: block;
     /* justify-self: stretch; */
     margin: auto;
+    position absolute;
     text-align: center;
     font-size: 1rem;
     font-weight: bold;
