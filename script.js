@@ -8,13 +8,19 @@ const searchFactsForm = document.getElementById("search-facts-form");
 
 // Create a mouseover event listener when hovering over the daily fact
 // to create a bolder border
+card.addEventListener("mouseover", (event) => {
+    // console.log(event.target)
+    event.target.style.color = "red";
+    setTimeout(() => {
+        event.target.style.color = ""}, 1500)
+    })
 
 // Click event that generates a new random fact
 newFactBtn.addEventListener("click", generateNewFact); 
 
 // Submit event listener to prevent from refreshing the page when submitting
 // the search for a particular number fact and clears the text from the
-// search bar
+// search bar. It will display an alert if it is not a number between 1-50.
 searchFactsContainer.addEventListener("submit", (event) => {
     event.preventDefault();
     const searchedNumber = searchFactsForm.value;
