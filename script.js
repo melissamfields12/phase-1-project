@@ -25,7 +25,7 @@ searchFactsContainer.addEventListener("submit", (event) => {
     if (searchedNumber >= 1 && searchedNumber <= 50){
        return searchForFact(searchedNumber);
     } else {
-       return alert("No facts were located for that number. Please try again.")
+       return alert("No fact was located for that number. Please try searching for a number between 1-50.")
     }
 })
 // Fetching JSON data
