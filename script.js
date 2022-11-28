@@ -3,7 +3,6 @@ const factUrl = 'http://localhost:3000/facts'
 const newFactBtn = document.querySelector('#new-fact-btn');
 const searchFactsContainer = document.querySelector('#new-fact-request');
 const searchFactsForm = document.getElementById("search-facts-form");
-
 // console.log(searchFactsForm)
 // let factArray = [];
 
@@ -22,15 +21,13 @@ searchFactsContainer.addEventListener("submit", (event) => {
     // console.log(event)
     // debugger;
     // console.log(searchedNumber);
-    // Attempted to do an alert on the numbers outside of the range 1-50
-    // if (searchedNumber >= 1 && searchedNumber <= 50) {
-    //     return document.querySelector('#submit-search').addEventListener("submit", (event) => 
-    //     alert("No facts were located for that number. Please try again."))
-    // }
     searchFactsForm.value = "";
-    searchForFact(searchedNumber);
+    if (searchedNumber >= 1 && searchedNumber <= 50){
+       return searchForFact(searchedNumber);
+    } else {
+       return alert("No facts were located for that number. Please try again.")
+    }
 })
-
 // Fetching JSON data
 function fetchFacts() {
     fetch(factUrl)
