@@ -61,7 +61,7 @@ function searchForFact(searchedNumber) {
     fetch(factUrl)
     .then(resp => resp.json())
     .then(factArray => {
-        const searchedFact = factArray.find((fact) => fact.number == searchedNumber);
+        const searchedFact = factArray.find((fact) => fact.number === parseInt(searchedNumber, 10));
         card.innerHTML = ""
         createFoundFact(searchedFact)
 })
