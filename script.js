@@ -7,7 +7,7 @@ const searchFactsForm = document.getElementById("search-facts-form");
 card.addEventListener("mouseover", (event) => {
     event.target.style.color = "red";
     setTimeout(() => {
-        event.target.style.color = ""}, 1500)
+        event.target.style.color = ""}, 1500);
     })
 
 newFactBtn.addEventListener("click", generateNewFact); 
@@ -40,15 +40,15 @@ function generateRandomFact(factArray) {
 }
 
 function createRandomFact(generatedFact){  
-    const ul = document.createElement('ul')
-    ul.classList.add('list')
+    const ul = document.createElement('ul');
+    ul.classList.add('list');
     const li1 = document.createElement('li');
     li1.textContent = `Number: ${generatedFact.number}`;
     const li2 = document.createElement('li');
     li2.textContent = `Random fact: ${generatedFact.text}`;
     const li3 = document.createElement('li');
     li3.textContent = `Fact type: ${generatedFact.type}`;
-    ul.append(li1, li2, li3)
+    ul.append(li1, li2, li3);
     card.append(ul);    
 }
 
@@ -62,21 +62,21 @@ function searchForFact(searchedNumber) {
     .then(resp => resp.json())
     .then(factArray => {
         const searchedFact = factArray.find((fact) => fact.number === parseInt(searchedNumber, 10));
-        card.innerHTML = ""
+        card.innerHTML = "";
         createFoundFact(searchedFact)
 })
 }
 
 function createFoundFact(searchedFact) {
-    const ul = document.createElement('ul')
-    ul.classList.add('list')
+    const ul = document.createElement('ul');
+    ul.classList.add('list');
     const li1 = document.createElement('li');
     li1.textContent = `Number: ${searchedFact.number}`;
     const li2 = document.createElement('li');
     li2.textContent = `Random fact: ${searchedFact.text}`;
     const li3 = document.createElement('li');
     li3.textContent = `Fact type: ${searchedFact.type}`;
-    ul.append(li1, li2, li3)
+    ul.append(li1, li2, li3);
     card.append(ul); 
 }
 
